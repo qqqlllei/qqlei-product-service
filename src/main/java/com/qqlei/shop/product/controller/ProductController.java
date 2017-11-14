@@ -1,6 +1,7 @@
 package com.qqlei.shop.product.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Value("{my.profile.active}")
+	private String myProfileActive;
 	
 	@RequestMapping("/add") 
 	@ResponseBody
@@ -56,6 +60,7 @@ public class ProductController {
 	public Product findById(Long id){
 		try {
 			Product  result =  productService.findById(id);
+			result.setName(result.getName()+"my.profile.active:"+myProfileActive);
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(); 
