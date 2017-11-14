@@ -16,7 +16,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@Value("{my.profile.active}")
+	@Value("${my.profile.active}")
 	private String myProfileActive;
 	
 	@RequestMapping("/add") 
