@@ -55,7 +55,8 @@ public class ProductController {
 	@ResponseBody
 	public Product findById(Long id){
 		try {
-			return productService.findById(id);
+			Product  result =  productService.findById(id);
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		}
