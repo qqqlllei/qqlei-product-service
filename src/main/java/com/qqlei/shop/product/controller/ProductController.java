@@ -1,5 +1,6 @@
 package com.qqlei.shop.product.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +62,7 @@ public class ProductController {
 		try {
 			Product  result =  productService.findById(id);
 			result.setName(result.getName()+"my.profile.active:"+myProfileActive);
+			System.out.println("findById"+"["+ JSONObject.toJSON(result).toString()+"]");
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(); 
